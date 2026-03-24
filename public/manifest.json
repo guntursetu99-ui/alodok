@@ -1,0 +1,20 @@
+{
+  "short_name": "Alodokter",
+  "name": "Alodokter Clone - Health Platform",
+  "icons": [
+    {
+      "src": "https://picsum.photos/seed/alodokter/192/192",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "https://picsum.photos/seed/alodokter/512/512",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ],
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#2563eb",
+  "background_color": "#ffffff"
+}

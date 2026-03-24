@@ -1,0 +1,66 @@
+{
+  "entities": {
+    "Doctor": {
+      "title": "Doctor",
+      "description": "A medical professional profile.",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "description": "Unique identifier for the doctor." },
+        "name": { "type": "string", "description": "Full name of the doctor." },
+        "specialty": { "type": "string", "description": "Medical specialty." },
+        "experience": { "type": "string", "description": "Years of experience." },
+        "rating": { "type": "number", "description": "Average rating from patients." },
+        "reviews": { "type": "integer", "description": "Total number of reviews." },
+        "price": { "type": "string", "description": "Consultation price." },
+        "location": { "type": "string", "description": "Hospital or clinic location." },
+        "image": { "type": "string", "description": "URL to the doctor's profile image." },
+        "about": { "type": "string", "description": "Brief biography or description." },
+        "available": { "type": "boolean", "description": "Whether the doctor is currently available for booking." }
+      },
+      "required": ["id", "name", "specialty", "price", "location"]
+    },
+    "Appointment": {
+      "title": "Appointment",
+      "description": "A scheduled consultation between a user and a doctor.",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "description": "Unique identifier for the appointment." },
+        "userId": { "type": "string", "description": "UID of the user who booked the appointment." },
+        "doctorId": { "type": "string", "description": "ID of the doctor booked." },
+        "doctorName": { "type": "string", "description": "Name of the doctor." },
+        "date": { "type": "string", "format": "date", "description": "Date of the appointment (YYYY-MM-DD)." },
+        "time": { "type": "string", "description": "Time of the appointment (HH:MM)." },
+        "status": { "type": "string", "enum": ["pending", "confirmed", "cancelled"], "description": "Current status of the appointment." },
+        "createdAt": { "type": "string", "format": "date-time", "description": "Timestamp when the appointment was created." }
+      },
+      "required": ["id", "userId", "doctorId", "date", "time", "status", "createdAt"]
+    },
+    "User": {
+      "title": "User",
+      "description": "A patient or user profile.",
+      "type": "object",
+      "properties": {
+        "uid": { "type": "string", "description": "Firebase Auth UID." },
+        "displayName": { "type": "string", "description": "User's full name." },
+        "email": { "type": "string", "format": "email", "description": "User's email address." },
+        "photoURL": { "type": "string", "description": "URL to the user's profile picture." },
+        "role": { "type": "string", "enum": ["user", "admin"], "description": "User's role in the application." }
+      },
+      "required": ["uid", "email", "role"]
+    }
+  },
+  "firestore": {
+    "/doctors/{doctorId}": {
+      "schema": "Doctor",
+      "description": "Collection of doctor profiles."
+    },
+    "/appointments/{appointmentId}": {
+      "schema": "Appointment",
+      "description": "Collection of user appointments."
+    },
+    "/users/{userId}": {
+      "schema": "User",
+      "description": "Collection of user profiles."
+    }
+  }
+}
